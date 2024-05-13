@@ -1,0 +1,215 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+local Window = OrionLib:MakeWindow({Name = "PupaHub | trololololo", HidePremium = false, IntroIcon = "https://gas-kvas.com/uploads/posts/2023-01/1673902059_gas-kvas-com-p-risunki-po-kletochkam-lyagushka-pepe-23.png", IntroText = "PupaHub", SaveConfig = true, ConfigFolder = "PupaHub"})
+
+function say(data)
+    return game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(data, "All")
+end
+
+
+
+OrionLib:MakeNotification({
+	Name = "PupaHub Working",
+	Content = "Notification content... what will it say??",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+ 	
+})
+
+
+---------Tabs--------------
+
+local CreditsTab = Window:MakeTab({
+	Name = "Credits",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local MainTab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local HubsTab = Window:MakeTab({
+	Name = "Hubs",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local FeTab = Window:MakeTab({
+	Name = "Fe Scripts",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local slapbat = Window:MakeTab({
+	Name = "Slap Battles",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+---------------Credits--------------------
+
+CreditsTab:AddLabel("Made by: danlacho")
+
+
+
+
+--------LocalPlayer-------------
+
+local Section = MainTab:AddSection({
+	Name = "LocalPLayer"
+})
+
+MainTab:AddSlider({
+ Name = "Walkspeed",
+ Min = 16,
+ Max = 500,
+ Default = 16,
+ Color = Color3.fromRGB(255,255,255),
+ Increment = 1,
+ ValueName = "WS",
+ Callback = function(Value)
+  game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+ end    
+})
+
+MainTab:AddSlider({
+ Name = "Jump Height",
+ Min = 16,
+ Max = 500,
+ Default = 5,
+ Color = Color3.fromRGB(255,255,255),
+ Increment = 1,
+ ValueName = "Height",
+ Callback = function(Value)
+  game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+ end    
+})
+
+MainTab:AddSlider({
+    Name = "Field of View",
+    Min = 70,
+    Max = 120,
+    Default = 70,
+    Color = Color3.fromRGB(255,255,255),
+    Increment = 1,
+    ValueName = "FOV",
+    Callback = function(Value)
+        game.Workspace.CurrentCamera.FieldOfView = Value
+    end    
+})
+
+local Section = MainTab:AddSection({
+	Name = "Other"
+})
+
+
+MainTab:AddButton({
+	Name = "AntiFling!",
+	Callback = function()
+      		loadstring(game:HttpGet("https://scriptblox.com/raw/Universal-Script-antifling-script-ig-4705"))()
+  	end    
+})
+
+MainTab:AddButton({
+	Name = "inf yeld",
+	Callback = function()
+      		loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+  	end    
+})
+
+slapbat:AddButton({
+	Name = "Teleport item!",
+	Callback = function()
+      		mouse = game.Players.LocalPlayer:GetMouse()
+tool = Instance.new("Tool")
+tool.RequiresHandle = false
+tool.Name = "Click Teleport"
+tool.Activated:connect(function()
+local pos = mouse.Hit+Vector3.new(0,2.5,0)
+pos = CFrame.new(pos.X,pos.Y,pos.Z)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+end)
+tool.Parent = game.Players.LocalPlayer.Backpack
+  	end    
+})
+
+slapbat:AddButton({
+	Name = "no cd!",
+	Callback = function()
+      		local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local tool = character:FindFirstChildOfClass("Tool") or player.Backpack:FindFirstChildOfClass("Tool")
+
+while character.Humanoid.Health ~= 0 do
+local localscript = tool:FindFirstChildOfClass("LocalScript")
+local localscriptclone = localscript:Clone()
+localscriptclone = localscript:Clone()
+localscriptclone:Clone()
+localscript:Destroy()
+localscriptclone.Parent = tool
+wait(0.1)
+end
+  	end    
+})
+
+
+
+slapbat:AddButton({
+	Name = "anti-cheat!",
+	Callback = function()
+      		-- Anti-Cheat Bypass
+local Namecall
+Namecall = hookmetamethod(game, '__namecall', function(self, ...)
+   if getnamecallmethod() == 'FireServer' and tostring(self) == 'Ban' then
+       return
+   elseif getnamecallmethod() == 'FireServer' and tostring(self) == 'WalkSpeedChanged' then
+       return
+   elseif getnamecallmethod() == 'FireServer' and tostring(self) == 'AdminGUI' then
+       return
+   end
+   return Namecall(self, ...)
+end)
+  	end    
+})
+
+slapbat:AddButton({
+	Name = "hitboxes!",
+	Callback = function()
+      		loadstring(game:HttpGet('https://raw.githubusercontent.com/Bilmemi/hitbox2/main/op'))()
+  	end    
+})
+
+slapbat:AddButton({
+	Name = "Reach!",
+	Callback = function()
+      		local plr = game.Players.LocalPlayer
+
+function supaSiza(v)
+   if v:IsA("Tool") then
+       v.Glove.Transparency = 0.75
+       v.Glove.Size = Vector3.new(10, 30, 15)
+   end
+end
+
+plr.Character.ChildAdded:Connect(supaSiza)
+
+plr.CharacterAdded:Connect(function(char)
+   char.ChildAdded:Connect(supaSiza)
+end)
+  	end    
+})
+
+-------------------Hubs-----------------------
+
+HubsTab:AddButton({
+	Name = "A dusty trip",
+	Callback = function()
+      		loadstring(game:HttpGet("https://raw.githubusercontent.com/artemy133563/Utilities/main/ADustyTrip",true))()
+  	end    
+})
+
+
